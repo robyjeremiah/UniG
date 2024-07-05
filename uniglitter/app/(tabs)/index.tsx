@@ -93,7 +93,7 @@ export default function Index() {
         {movies.length > 0 ? (
           movies.map((movie) => (
             <View key={movie._id} style={styles.card}>
-              <Image source={{ uri: movie.poster }} style={styles.image} />
+              {/* <Image source={{ uri: movie.poster }} style={styles.image} /> */}
               <View style={styles.cardContent}>
                 <Text style={styles.title}>{movie.title}</Text>
                 <Text style={styles.plot}>{movie.plot}</Text>
