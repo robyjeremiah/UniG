@@ -39,8 +39,7 @@
       "eas": {
         "projectId": "b2ae5faf-2ad3-4e15-a5af-0e8f5eea0dcc"
       },
-      "database" : "mongodb+srv://robyjeremiah:testpassword@uniglitter.negfqt5.mongodb.net/?retryWrites=true&w=majority&appName=UniGlitter"
-
+      "database": "mongodb+srv://robyjeremiah:testpassword@uniglitter.negfqt5.mongodb.net/?retryWrites=true&w=majority&appName=UniGlitter"
     },
     "owner": "robyjeremiah"
   }

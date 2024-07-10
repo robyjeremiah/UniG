@@ -2,7 +2,7 @@ import { MongoClient, ServerApiVersion } from "mongodb";
 import Constants from 'expo-constants';
 
 interface Product {
-  _id?: string;
+  _id: string;
   name: string;
   description: string;
   price: number;
