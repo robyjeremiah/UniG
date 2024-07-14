@@ -29,6 +29,7 @@ export default function Index() {
     try {
       // Simulating fetching data from an API endpoint
       // Replace with your actual API endpoint for products
+      //'http://localhost:8081/products'
       const response = await fetch('/products');
       const data = await response.json();
 

@@ -17,7 +17,7 @@ interface Category {
   _id: ObjectId;
   name: string;
   description: string;
-  parent_category_id: string | null ;
+  parent_category_id: string | null;
 }
 
 const categories = [
@@ -73,15 +73,9 @@ export async function GET(request: Request) {
     const database = client.db("UG_Database");
     const collection = database.collection("categories");
 
-    // Insert the product documents
-    const result = await collection.insertMany(categories);
-    console.log(`Successfully inserted ${result.insertedCount} products`);
-    client.close()
-
     // Query the collection (e.g., find all documents)
-    
-    //const documents = await collection.find({}).toArray();
-   /*  const pipeline = [
+    const documents = await collection.find({}).toArray();
+    /* const pipeline = [
       {
         $project: {
           _id: 1,
@@ -107,6 +101,9 @@ export async function GET(request: Request) {
   //return Response.json({I : 'made it'});
 }
 
-
+// Insert the product documents
+/* const result = await collection.insertMany(categories);
+console.log(`Successfully inserted ${result.insertedCount} products`);
+client.close() */
 
 

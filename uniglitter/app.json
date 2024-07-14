@@ -19,7 +19,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.robyjeremiah.uniglitter"
     },
     "web": {
       "bundler": "metro",
@@ -34,7 +35,7 @@
     },
     "extra": {
       "router": {
-        "origin": false
+        "origin": "http://192.168.1.213:8081"
       },
       "eas": {
         "projectId": "b2ae5faf-2ad3-4e15-a5af-0e8f5eea0dcc"
