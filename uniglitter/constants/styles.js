@@ -118,12 +118,21 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  categoryScreenContainer: {
+    flex: 1,
+    backgroundColor: '#f8f8f8',
+    padding: '5%',
+    paddingTop: '10%',
+    justifyContent: "center",
+    alignItems: "center",
+  },
   categoryContainer: {
     marginBottom: 20,
     borderWidth: 1,
     borderColor: '#ccc',
     padding: 10,
     borderRadius: 5,
+    width: '100%',
   },
   categoryName: {
     fontSize: 18,
@@ -133,4 +142,9 @@ export const styles = StyleSheet.create({
     marginTop: 5,
     color: '#555',
   },
+  buttonContainer: {
+    width: '100%',
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+  }
 });

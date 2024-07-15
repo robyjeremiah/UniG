@@ -1,6 +1,7 @@
-import { ObjectId } from 'mongodb';
 import React, { useState, useEffect } from 'react';
-import { Text, View, StyleSheet, ScrollView, ActivityIndicator, Button } from 'react-native';
+import { Text, View, ScrollView, ActivityIndicator, Button } from 'react-native';
+import { styles } from '../../constants/styles.js';
+import { ObjectId } from 'mongodb';
 
 interface Category {
   _id: ObjectId;
@@ -44,55 +45,24 @@ const CategoriesScreen = () => {
   }
 
   return (
-    <ScrollView contentContainerStyle={styles.container}>
+    <ScrollView contentContainerStyle={styles.categoryScreenContainer}>
       <Text>Categories</Text>
       {error && <Text style={styles.errorText}>{error}</Text>}
-
       {categories.length > 0 ? (
-          categories.map((category) => (
-            <View key={category._id.toString()} style={styles.categoryContainer}>
-              <Text style={styles.categoryName}>{category.name}</Text>
-              <Text style={styles.categoryDescription}>{category.description}</Text>
-            </View>
-          ))
-        ) : (
-          <Text>No categories available</Text>
-        )}
-
-      <Button onPress={fetchCategories} title="Refresh Categories" />
+        categories.map((category) => (
+          <View key={category._id.toString()} style={styles.categoryContainer}>
+            <Text style={styles.categoryName}>{category.name}</Text>
+            <Text style={styles.categoryDescription}>{category.description}</Text>
+          </View>
+        ))
+      ) : (
+        <Text>No categories available</Text>
+      )}
+      <View style={styles.buttonContainer}>
+        <Button onPress={fetchCategories} title="Refresh Categories" />
+      </View>
     </ScrollView>
   );
 };
-
-const styles = StyleSheet.create({
-  loadingContainer: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  container: {
-    padding: 20,
-  },
-  categoryContainer: {
-    marginBottom: 20,
-    borderWidth: 1,
-    borderColor: '#ccc',
-    padding: 10,
-    borderRadius: 5,
-  },
-  categoryName: {
-    fontSize: 18,
-    fontWeight: 'bold',
-  },
-  categoryDescription: {
-    marginTop: 5,
-    color: '#555',
-  },
-  errorText: {
-    color: 'red',
-    textAlign: 'center',
-    marginVertical: 10,
-  },
-});
 
 export default CategoriesScreen;
