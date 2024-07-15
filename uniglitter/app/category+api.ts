@@ -20,39 +20,9 @@ interface Category {
   parent_category_id: string | null;
 }
 
-const categories = [
-  {
-    name: "Category 1",
-    description: "This is the description for category 1.",
-    parent_category_id: null // Top-level category
-  },
-  {
-    name: "Category 2",
-    description: "This is the description for category 2.",
-    parent_category_id: null // Top-level category
-  },
-  {
-    name: "Category 3",
-    description: "This is the description for category 3.",
-    parent_category_id: null // Top-level category
-  },
-  {
-    name: "Category 4",
-    description: "This is the description for category 4.",
-    parent_category_id: null // Top-level category
-  },
-  {
-    name: "Category 5",
-    description: "This is the description for category 5.",
-    parent_category_id: null // Top-level category
-  }
-];
-
-
 
 export async function GET(request: Request) {
-
-  const uri: string = process.env.EXPO_PUBLIC_DB_!
+  const uri: string = process.env.EXPO_PUBLIC_DB_!;
   const client = new MongoClient(uri, {
     serverApi: {
       version: ServerApiVersion.v1,
@@ -60,6 +30,7 @@ export async function GET(request: Request) {
       deprecationErrors: true,
     },
   });
+  
   try {
     // Connect the client to the server
     await client.connect();
@@ -74,7 +45,7 @@ export async function GET(request: Request) {
     const collection = database.collection("categories");
 
     // Query the collection (e.g., find all documents)
-    const documents = await collection.find({}).toArray();
+    const categories = await collection.find({}).toArray();
     /* const pipeline = [
       {
         $project: {
@@ -90,20 +61,16 @@ export async function GET(request: Request) {
         }
       },
     ];
-
     const results = await collection.aggregate(pipeline).toArray(); */
-
-    return Response.json('');
+    return Response.json(categories);
 
   } catch (err) {
+    
     console.error(err);
+    return new Response(JSON.stringify({ error: 'Failed to connect to the database' }), {
+      headers: { 'Content-Type': 'application/json' },
+      status: 500,
+    });
   }
-  //return Response.json({I : 'made it'});
 }
-
-// Insert the product documents
-/* const result = await collection.insertMany(categories);
-console.log(`Successfully inserted ${result.insertedCount} products`);
-client.close() */
-
-
+    

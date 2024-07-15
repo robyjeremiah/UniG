@@ -49,16 +49,32 @@ export default function Index() {
     <View style={styles.container}>
       <Text style={styles.header}>Welcome to Makeup Store</Text>
       <TextInput style={styles.searchBar} placeholder="Search for products..." />
-
       {loading ? (
         <ActivityIndicator size="large" color="#0000ff" />
       ) : (
         <Button onPress={fetchProducts} title="Fetch Products" />
       )}
-
       {error && <Text style={styles.errorText}>{error}</Text>}
-
       <ScrollView style={styles.scrollContainer}>
+
+        <Text style={styles.sectionHeader}>Popular Products</Text>
+        {products.length > 0 ? (
+          products.map((product) => (
+            <View key={product._id} style={styles.card}>
+              {/* <Image source={{ uri: product.images[0] }} style={styles.image} /> */}
+              <View style={styles.cardContent}>
+                <Text style={styles.title}>{product.name}</Text>
+                <Text style={styles.description}>{product.description}</Text>
+                <Text style={styles.price}>Price: ${product.price.toFixed(2)}</Text>
+                <Text style={styles.stock}>Stock: {product.stock_quantity}</Text>
+              </View>
+            </View>
+          ))
+        ) : (
+          <Text>No products available</Text>
+        )}
+
+
 
         <Text style={styles.sectionHeader}>Recently Viewed</Text>
         <View style={styles.bigSplashDisplay}>

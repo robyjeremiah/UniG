@@ -1,11 +1,12 @@
+import { ObjectId } from 'mongodb';
 import React, { useState, useEffect } from 'react';
 import { Text, View, StyleSheet, ScrollView, ActivityIndicator, Button } from 'react-native';
 
 interface Category {
-  _id: string;
+  _id: ObjectId;
   name: string;
   description: string;
-  parent_category_id: string | null ;
+  parent_category_id: string | null;
 }
 
 const CategoriesScreen = () => {
@@ -13,9 +14,9 @@ const CategoriesScreen = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  /* useEffect(() => {
+  useEffect(() => {
     fetchCategories();
-  }, []); */
+  }, []);
 
   const fetchCategories = async () => {
     setLoading(true);
@@ -46,12 +47,18 @@ const CategoriesScreen = () => {
     <ScrollView contentContainerStyle={styles.container}>
       <Text>Categories</Text>
       {error && <Text style={styles.errorText}>{error}</Text>}
-      {/* {categories.map((category) => (
-        <View key={category._id} style={styles.categoryContainer}>
-          <Text style={styles.categoryName}>{category.name}</Text>
-          <Text style={styles.categoryDescription}>{category.description}</Text>
-        </View>
-      ))} */}
+
+      {categories.length > 0 ? (
+          categories.map((category) => (
+            <View key={category._id.toString()} style={styles.categoryContainer}>
+              <Text style={styles.categoryName}>{category.name}</Text>
+              <Text style={styles.categoryDescription}>{category.description}</Text>
+            </View>
+          ))
+        ) : (
+          <Text>No categories available</Text>
+        )}
+
       <Button onPress={fetchCategories} title="Refresh Categories" />
     </ScrollView>
   );
