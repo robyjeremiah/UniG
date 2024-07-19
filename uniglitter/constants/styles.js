@@ -40,7 +40,7 @@ export const styles = StyleSheet.create({
     marginBottom: 20,
     flexDirection: 'column',
     padding: 10,
-    width: '100%',
+    width: '99%',
   },
   image: {
     width: '100%',
@@ -78,7 +78,7 @@ export const styles = StyleSheet.create({
     justifyContent: 'space-around',
     marginTop: 20,
     backgroundColor: '#1b1e2f', // Footer background color
-    paddingVertical: 10,
+    paddingVertical: '2%',
     position: 'absolute', // Position the footer absolutely
     bottom: 0, // Stick it to the bottom
     left: 0,
@@ -88,6 +88,7 @@ export const styles = StyleSheet.create({
     color: '#007bff', // Blue color for links
     textDecorationLine: 'underline',
     fontSize: 16,
+    paddingBottom: "2.5%"
   },
   bigSplashDisplay: {
     backgroundColor: '#f0f0f0',

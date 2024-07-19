@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Text, View, ScrollView, ActivityIndicator, Button } from 'react-native';
+import { Text, View, ScrollView, ActivityIndicator, Button, TouchableOpacity } from 'react-native';
 import { styles } from '../../constants/styles.js';
 import { ObjectId } from 'mongodb';
 
@@ -46,14 +46,14 @@ const CategoriesScreen = () => {
 
   return (
     <ScrollView contentContainerStyle={styles.categoryScreenContainer}>
-      <Text>Categories</Text>
+      <Text style={styles.header}>Categories</Text>
       {error && <Text style={styles.errorText}>{error}</Text>}
       {categories.length > 0 ? (
         categories.map((category) => (
-          <View key={category._id.toString()} style={styles.categoryContainer}>
+          <TouchableOpacity key={category._id.toString()} style={styles.categoryContainer}>
             <Text style={styles.categoryName}>{category.name}</Text>
             <Text style={styles.categoryDescription}>{category.description}</Text>
-          </View>
+          </TouchableOpacity>
         ))
       ) : (
         <Text>No categories available</Text>

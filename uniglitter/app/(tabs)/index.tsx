@@ -47,12 +47,15 @@ export default function Index() {
     <View style={styles.container}>
       <Text style={styles.header}>Welcome to Makeup Store</Text>
       <TextInput style={styles.searchBar} placeholder="Search for products..." />
+      
       {loading ? (
         <ActivityIndicator size="large" color="#0000ff" />
       ) : (
         <Button onPress={fetchProducts} title="Fetch Products" />
       )}
+
       {error && <Text style={styles.errorText}>{error}</Text>}
+
       <ScrollView style={styles.scrollContainer}>
         <Text style={styles.sectionHeader}>Popular Products</Text>
         {products.length > 0 ? (

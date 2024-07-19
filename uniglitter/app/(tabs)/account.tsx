@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, ScrollView, TouchableOpacity } from 'react-native';
 import { styles } from '../../constants/styles.js';
 
-interface AccountScreenProps {}
+interface AccountScreenProps { }
 
 const AccountScreen: React.FC<AccountScreenProps> = () => {
   const [authenticated, setAuthenticated] = useState<boolean>(false); // State for authentication status
@@ -11,8 +11,8 @@ const AccountScreen: React.FC<AccountScreenProps> = () => {
   const renderContent = () => {
     if (authenticated) {
       return (
-        <ScrollView style={styles.scrollContainer}>
-
+        <><Text style={styles.header}>Welcome to Makeup Store</Text>
+        <ScrollView contentContainerStyle={styles.loadingContainer}>
           {/* Example section for account details */}
           <View style={styles.card}>
             {/* Replace with actual user account information */}
@@ -22,30 +22,39 @@ const AccountScreen: React.FC<AccountScreenProps> = () => {
           </View>
 
           {/* Example section for orders */}
-          <TouchableOpacity style={styles.card} onPress={() => { /* Navigate to orders screen */ }}>
+          <TouchableOpacity style={styles.card} onPress={() => { } }>
             <Text style={styles.title}>Orders</Text>
             <Text style={styles.description}>View your order history</Text>
           </TouchableOpacity>
 
           {/* Example section for settings */}
-          <TouchableOpacity style={styles.card} onPress={() => { /* Navigate to settings screen */ }}>
+          <TouchableOpacity style={styles.card} onPress={() => { } }>
             <Text style={styles.title}>Settings</Text>
             <Text style={styles.description}>Manage your account settings</Text>
           </TouchableOpacity>
 
           {/* Example section for logout */}
-          <TouchableOpacity style={styles.card} onPress={() => { /* Handle logout */ }}>
+          <TouchableOpacity style={styles.card} onPress={() => { } }>
             <Text style={styles.title}>Logout</Text>
             <Text style={styles.description}>Sign out from your account</Text>
           </TouchableOpacity>
+          {/*Footer with link to the shopping cart */}
 
-        </ScrollView>
+          <View style={styles.footer}>
+            <TouchableOpacity onPress={() => { } }>
+              <Text style={styles.footerLink}>View Shopping Cart</Text>
+            </TouchableOpacity>
+          </View>
+        </ScrollView></>
       );
     } else {
       return (
-        <View style={styles.loadingContainer}>
-          <Text style={styles.errorText}>Please login to view your account.</Text>
+        <View style={styles.container}>
+          <Text style = {styles.header}>Shopping Cart</Text>
           {/* Optionally, add a login button or link */}
+          <View style={styles.footer}>
+          <Text style={styles.footerLink}>Please login to view your account. or Create account</Text>
+          </View>
         </View>
       );
     }
@@ -53,18 +62,13 @@ const AccountScreen: React.FC<AccountScreenProps> = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.header}>Shopping Cart</Text>
-
       {/* Render content based on authentication status */}
       {renderContent()}
-
-      {/* Footer with link to the shopping cart */}
-      <View style={styles.footer}>
-        <TouchableOpacity onPress={() => { /* Navigate to shopping cart */ }}>
-          <Text style={styles.footerLink}>View Shopping Cart</Text>
-        </TouchableOpacity>
-      </View>
       
+      {/* <Text style={styles.header}>Shopping Cart</Text> */}
+
+
+
     </View>
   );
 };
