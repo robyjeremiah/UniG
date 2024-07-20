@@ -2,13 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Text, View, ScrollView, ActivityIndicator, Button, TouchableOpacity } from 'react-native';
 import { styles } from '../../constants/styles.js';
 import { ObjectId } from 'mongodb';
-
-interface Category {
-  _id: ObjectId;
-  name: string;
-  description: string;
-  parent_category_id: string | null;
-}
+import { Category } from '@/scripts/interfaces/interfaces.js';
 
 const CategoriesScreen = () => {
   const [categories, setCategories] = useState<Category[]>([]);

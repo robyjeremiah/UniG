@@ -1,17 +1,18 @@
 import React, { useState } from 'react';
 import { View, Text, ScrollView, TouchableOpacity } from 'react-native';
-import { styles } from '../../constants/styles.js';
+import { styles } from '../../constants/styles';
+import { useAuthStore } from '../../stores/userStore';
 
 interface AccountScreenProps { }
 
 const AccountScreen: React.FC<AccountScreenProps> = () => {
-  const [authenticated, setAuthenticated] = useState<boolean>(false); // State for authentication status
+  const { isAuthenticated, isGuest } = useAuthStore();
 
   // Function to render different content based on authentication status
   const renderContent = () => {
-    if (authenticated) {
+    if (isAuthenticated) {
       return (
-        <><Text style={styles.header}>Welcome to Makeup Store</Text>
+        <><Text style={styles.header}>username here</Text>
         <ScrollView contentContainerStyle={styles.loadingContainer}>
           {/* Example section for account details */}
           <View style={styles.card}>
@@ -38,19 +39,20 @@ const AccountScreen: React.FC<AccountScreenProps> = () => {
             <Text style={styles.title}>Logout</Text>
             <Text style={styles.description}>Sign out from your account</Text>
           </TouchableOpacity>
-          {/*Footer with link to the shopping cart */}
 
-          <View style={styles.footer}>
+          {/*Footer with link to the shopping cart */}
+          {/* <View style={styles.footer}>
             <TouchableOpacity onPress={() => { } }>
               <Text style={styles.footerLink}>View Shopping Cart</Text>
             </TouchableOpacity>
-          </View>
+          </View> */}
+
         </ScrollView></>
       );
     } else {
       return (
         <View style={styles.container}>
-          <Text style = {styles.header}>Shopping Cart</Text>
+          <Text style = {styles.header}>Account</Text>
           {/* Optionally, add a login button or link */}
           <View style={styles.footer}>
           <Text style={styles.footerLink}>Please login to view your account. or Create account</Text>
